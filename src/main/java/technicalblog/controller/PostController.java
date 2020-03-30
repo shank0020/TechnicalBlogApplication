@@ -1,24 +1,24 @@
 package technicalblog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import technicalblog.service.PostService;
-import technicalblog.model.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.util.*;
+import technicalblog.model.Post;
+import technicalblog.service.PostService;
+
+import java.util.ArrayList;
 
 @Controller
-public class HomeController {
+public class PostController {
 
-    //@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private PostService postService;
 
-    @RequestMapping("/")
-    public String getAllPost(Model model) {
-        List<Post> posts = postService.getAllPost();
+    @RequestMapping("posts")
+    public String getUserPosts(Model model) {
+        ArrayList<Post> posts =  postService.getOnePost();
         model.addAttribute("posts", posts);
-        return "index";
+        return "posts";
     }
 }
