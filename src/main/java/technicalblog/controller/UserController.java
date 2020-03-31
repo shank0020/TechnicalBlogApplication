@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import technicalblog.model.Post;
 import technicalblog.model.User;
 import technicalblog.service.PostService;
+import technicalblog.service.UserService;
 
 import java.util.List;
 
@@ -16,6 +17,9 @@ public class UserController {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("users/login")
     public String login() {
@@ -27,10 +31,22 @@ public class UserController {
         return "users/registration";
     }
 
+    @RequestMapping(value = "users/registration", method = RequestMethod.POST)
+    public String registerUser(User user) {
+        //This method will authenticate the user entered data and sent an confirmation email to the user.
+        // after authentication user will land into the index page where he/she can login to the site.
+        return "users/login";
+    }
+
     @RequestMapping(value = "users/login", method = RequestMethod.POST)
     public String loginUser(User user) {
         //This method will authenticate the user and redirect the user to its posts page.
-        return "redirect:/posts";
+        if(userService.login(user)) {
+            return "redirect:/posts";
+        }
+        else {
+            return "users/login";
+        }
     }
 
     @RequestMapping(value = "users/logout", method = RequestMethod.POST)

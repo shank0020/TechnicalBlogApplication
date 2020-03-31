@@ -2,9 +2,21 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head th:replace="layout :: site-head">
     <meta charset="UTF-8">
-    <title>Spring MVC Application - Registration</title>
+    <title>Spring MVC Application - Registration </title>
 </head>
-<body>
-test registration
-</body>
+<header th:replace="layout :: logged-out"></header>
+<h2>Please enter you details...</h2>
+<form method="post" th:objet="${User}">
+    <label for="firstName">First Name: </label>
+    <input type="text" id="firstName"><br/>
+    <label for="lastName">Last Name: </label>
+    <input type="text" id="lastName"><br/>
+    <label for="userName">User Name: </label>
+    <input type="text" id="userName"><br/>
+    <label for="password">Enter Password: </label>
+    <input type="password" id="password"><br/>
+    <label for="confirmPassword">Confirm Password: </label>
+    <input type="password" id="confirmPassword"><br/>
+    <input type="submit" id="submit" value="register">
+</form>
 </html>
