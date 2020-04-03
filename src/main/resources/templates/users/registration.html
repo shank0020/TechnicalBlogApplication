@@ -5,18 +5,15 @@
     <title>Spring MVC Application - Registration </title>
 </head>
 <header th:replace="layout :: logged-out"></header>
-<h2>Please enter you details...</h2>
-<form method="post" th:objet="${User}">
-    <label for="firstName">First Name: </label>
-    <input type="text" id="firstName"><br/>
-    <label for="lastName">Last Name: </label>
-    <input type="text" id="lastName"><br/>
-    <label for="userName">User Name: </label>
-    <input type="text" id="userName"><br/>
-    <label for="password">Enter Password: </label>
-    <input type="password" id="password"><br/>
-    <label for="confirmPassword">Confirm Password: </label>
-    <input type="password" id="confirmPassword"><br/>
-    <input type="submit" id="submit" value="register">
+<h2>Please Register:</h2>
+
+<form method="post" th:object="${User}">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"/>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"/>
+    <label for="fullname">Full Name:</label>
+    <input type="text" id="fullname" name="fullName"/>
+    <input type="submit" value="Register"/>
 </form>
 </html>

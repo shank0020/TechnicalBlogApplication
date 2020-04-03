@@ -7,10 +7,10 @@
 <header th:replace="layout :: logged-out"></header>
 <h2>Please Login: </h2>
 <form method="post" th:object="${User}">
-    <label for="login">Login: </label>
-    <input id="login" type="text">
+    <label for="username">Login: </label>
+    <input id="username" type="text"  name="username">
     <label for="password">Password: </label>
-    <input id="password" type="password">
+    <input id="password" type="password" name="password">
     <input id="submit" type="submit" value="Login">
 </form>
 </html>
