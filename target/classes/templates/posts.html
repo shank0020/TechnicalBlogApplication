@@ -14,6 +14,10 @@
         <div>
             <p th:text="${p.body}"></p>
         </div>
+        <a th:href="@{/editPost(postID=${p.id})}">Edit</a>
+        <form th:action="@{/deletePost(postID=${p.id})}" th:method="delete">
+            <input type="submit" value="Delete" />
+        </form>
     </post>
 </main>
 </body>
